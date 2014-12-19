@@ -17,18 +17,20 @@ dir = os.path.dirname(__file__)
 html_root = os.path.join(dir, "static", "html")
 static_root = os.path.join(dir, "static")
 
-def static_file(type, filename):
-    return static_file(os.path.join(type, filename), root=static_file)
+def _static_file(typ, filename):
+    print typ, filename
+    return static_file(os.path.join(typ, filename), static_file)
 
-def html_file(filename):
+def _html_file(filename):
+    print filename
     return static_file(filename, root=html_root)
 
 URLS = (
     ([GET, POST, DElETE], "/api", api.API()),
 
     # static:
-    (GET, "/weixin/<filename:path", html_file),
-    (GET, "/static/<typ>/<filename:*.[js$|css$|.png$|.jpg$]>", static_file),
+    (GET, "/weixin/<filename:path>", _html_file),
+    (GET, "/static/<typ>/<filename:*.[js$|css$|.png$|.jpg$]>", _static_file),
 )
 
 

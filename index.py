@@ -7,11 +7,10 @@ sys.path.append(os.path.join(dir, "deps"))
 import config
 import menu
 import urls
+import wxrobot
 
 import werobot
 from werobot.client import Client as mpClient
-
-
 
 
 
@@ -37,14 +36,7 @@ def main(cfg):
 
         urls.register_urls(robot.app)
 
-        @robot.handler
-        def echo(message):
-            print "get Msg:", message.content
-            return message
-
-        @robot.location
-        def location(msg):
-            print "Location:", msg.location, msg.scale, msg.label
+        wxrobot.register_handler(robot)
 
         robot.run(server='tornado', host="0.0.0.0", port=80,
                   url=cfg['wiexin']["ServerUrl"])
@@ -57,9 +49,11 @@ if __name__ == "__main__":
 
     cfg = config.parseConfig(tomlFile=os.path.join(dir, "cfg.toml"))
 
-    if "create_memu" in sys.argv:
-        create_menu(cfg)
+    if "create_menu" in sys.argv:
+        print create_menu(cfg)
+        print get_menu(cfg)
     elif "get_menu"  in sys.argv:
-        get_menu(cfg)
+        print get_menu(cfg)
     else:
+
         main(cfg)

@@ -4,6 +4,7 @@
 # App config file, private
 cfg.toml
 werobot_session
+*.doc
 
 # Eclipse
 .project
