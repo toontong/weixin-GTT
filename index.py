@@ -6,20 +6,14 @@ sys.path.append(os.path.join(dir, "deps"))
 
 import config
 import menu
+import urls
 
 import werobot
 from werobot.client import Client as mpClient
 
-robot = werobot.WeRoBot(token='tokenfortong')
 
-@robot.handler
-def echo(message):
-    print "get Msg:", message.content
-    return message
 
-@robot.location
-def location(msg):
-    print "Location:", msg.location, msg.scale, msg.label
+
 
 def _mpClient(cfg):
     mpCli = mpClient(cfg["wiexin"]["AppID"],
@@ -39,7 +33,21 @@ def get_menu(cfg):
 
 def main(cfg):
     try:
-        robot.run(server='tornado', host="0.0.0.0", port=80, url="/werobot/")
+        robot = werobot.WeRoBot(cfg['wiexin']['Token'])
+
+        urls.register_urls(robot.app)
+
+        @robot.handler
+        def echo(message):
+            print "get Msg:", message.content
+            return message
+
+        @robot.location
+        def location(msg):
+            print "Location:", msg.location, msg.scale, msg.label
+
+        robot.run(server='tornado', host="0.0.0.0", port=80,
+                  url=cfg['wiexin']["ServerUrl"])
     except KeyboardInterrupt:
         print "exit"
 

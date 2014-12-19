@@ -20,14 +20,14 @@ def getMenuJson(serverDomain, languageCN=True):
                     "type": "view",
                     "name": "New",
                     "key": "reg_create",
-                    "url":"http://{serverDomain}/reg/create",
+                    "url":"http://{serverDomain}/weixin/reg_create.html",
                     "sub_button": [ ]
                 },
                 {
                     "type": "view",
                     "name": "List",
                     "key": "reg_list",
-                    "url":"http://{serverDomain}/reg/list",
+                    "url":"http://{serverDomain}/weixin/reg_list.html",
                     "sub_button": [ ]
                 }
             ]
@@ -39,14 +39,14 @@ def getMenuJson(serverDomain, languageCN=True):
                     "type": "view",
                     "name": "New",
                     "key": "trip_create",
-                    "url":"http://{serverDomain}/trip/list",
+                    "url":"http://{serverDomain}/weixin/trip_create.html",
                    "sub_button": [ ]
                  },
                 {
                     "type": "view",
                     "name": "List",
                     "key": "trip_list",
-                    "url":"http://{serverDomain}/trip/list",
+                    "url":"http://{serverDomain}/weixin/trip_list.html",
                     "sub_button": [ ]
                 }
             ]
