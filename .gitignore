@@ -1,3 +1,15 @@
+# Python built files
+*.pyc
+
+# App config file, private
+cfg.toml
+werobot_session
+
+# Eclipse
+.project
+.pydevproject
+.settings/
+
 # Built application files
 *.apk
 *.ap_

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/jquerymobile/1.4.2/jquery.mobile.min.css">
+<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="http://apps.bdimg.com/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+<link rel="stylesheet" href="../css/reg.css">
+
+<script>
+//显示加载器
+function showLoader() {
+    //显示加载器.for jQuery Mobile 1.2.0
+    $.mobile.loading('show', {
+        text: '加载中...', //加载器中显示的文字
+        textVisible: true, //是否显示文字
+        theme: 'a',        //加载器主题样式a-e
+        textonly: false,   //是否只显示文字
+        html: ""           //要显示的html内容，如图片等
+    });
+}
+
+//隐藏加载器.for jQuery Mobile 1.2.0
+function hideLoader()
+{
+    //隐藏加载器
+    $.mobile.loading('hide');
+}
+</script>
+</head>
+<body>
+
+	<div data-role="page" id="pageone">
+		<div data-role="header" style="background-color:#F49E2D;">
+			<h1>个人信息登记</h1>
+		</div>
+
+		<div data-role="content">
+			<input type="text" name="check_code" id="check_code" placeholder="验证码">
+			<input type="text" name="name" id="name" placeholder="姓名">
+			<input type="text" name="id" id="id" placeholder="身份证编号">
+			<fieldset data-role="controlgroup">
+			  <label for="male">男</label>
+			  <input type="radio" name="gender" id="male" value="male">
+			  <label for="female">女</label>
+			  <input type="radio" name="gender" id="female" value="female">	
+			</fieldset>
+			<input type="text" name="passport" id="passport" placeholder="护照编号">
+			个人照片:<input type="file" accept="image/png" name="photo" id="photo" text="asdf">
+		</div>
+
+		<div data-role="footer">
+			<h1><input type="button" data-inline="true" value="提交" onclick="showLoader()"></h1>
+		</div>
+	</div>
+
+</body>
+</html>
